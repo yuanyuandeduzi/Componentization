@@ -1,0 +1,48 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                //注解处理器需要的模块名，作为路径映射的前缀
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+
+        applicationId "com.example.componentization"
+        minSdk rootProject.ext.android.minSdk
+        targetSdk rootProject.ext.android.targetSdk
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation project(":BaseLibs")
+    annotationProcessor rootProject.ext.annotationLibs
+
+    if(isMoudle) {
+        implementation project(":Login")
+        implementation project(":share")
+        implementation project(":add")
+    }
+}

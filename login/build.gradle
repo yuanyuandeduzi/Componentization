@@ -1,0 +1,58 @@
+if (isMoudle.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                //注解处理器需要的模块名，作为路径映射的前缀
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+
+        if (isMoudle.toBoolean()) {
+            applicationId "com.example.login"
+        }
+
+        minSdk rootProject.ext.android.minSdk
+        targetSdk rootProject.ext.android.targetSdk
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    sourceSets {
+        main {
+            if (isMoudle) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }else {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            }
+        }
+    }
+
+}
+
+dependencies {
+
+    implementation project(":BaseLibs")
+    annotationProcessor rootProject.ext.annotationLibs
+
+}
