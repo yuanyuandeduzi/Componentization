@@ -25,6 +25,7 @@ public class MainApplication extends BaseApplication {
         initOver(this);
     }
     private boolean isDebug() {
+        String name;
         return BuildConfig.DEBUG;
     }
 
