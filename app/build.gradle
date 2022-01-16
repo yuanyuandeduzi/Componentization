@@ -41,7 +41,7 @@ dependencies {
     annotationProcessor rootProject.ext.annotationLibs
 
     if(isMoudle) {
-        implementation project(":Login")
+       // implementation project(":Login")
         implementation project(":share")
         implementation project(":add")
     }

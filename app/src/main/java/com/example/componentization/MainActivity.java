@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.baselibs.Const_ARouter;
 import com.example.baselibs.ServiceFactory;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this, Login.class));
                 ARouter.getInstance().build(Const_ARouter.LOGIN_MAIN).navigation();
             }
         });
