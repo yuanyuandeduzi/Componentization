@@ -7,8 +7,8 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Componentization"
-include ':app'
-include ':BaseLibs'
-include ':Login'
-include ':share'
-include ':add'
+include(":app")
+include(":BaseLibs")
+include(":Login")
+include(":share")
+include(":add")
