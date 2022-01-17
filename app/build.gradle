@@ -40,7 +40,7 @@ dependencies {
     implementation project(":BaseLibs")
     annotationProcessor rootProject.ext.annotationLibs
 
-    if(isMoudle) {
+    if(!isMoudle.toBoolean()) {
         implementation project(":Login")
         implementation project(":share")
         implementation project(":add")
